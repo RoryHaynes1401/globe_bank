@@ -1,5 +1,7 @@
 <?php
 ob_start(); // output buddering turned on
+
+session_start(); //turn on sessions super global
 // Assign file paths to PHP constants
 // __FILE__ returns the current path to this file
 // dirname() returns the path to the parent directory
