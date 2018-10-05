@@ -10,6 +10,8 @@ $id = $_GET['id'];
 if(is_post_request()) {
 
   $result = delete_page($id);
+  //TODO add message here
+  $_SESSION['status'] = "Page deleted";
   redirect_to(url_for('/staff/pages/index.php'));
 
 } else {

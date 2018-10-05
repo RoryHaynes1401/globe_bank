@@ -21,6 +21,8 @@ if(is_post_request()) {
 
   $result = update_page($page);
   if($result === true) {
+    //TODO add message here
+    $_SESSION['status'] = "Page updated";
     redirect_to(url_for('/staff/pages/show.php?id=' . $id));
   } else {
     $errors = $result;

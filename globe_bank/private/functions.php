@@ -54,4 +54,20 @@ function display_errors($errors=array()) {
   return $output;
 }
 
+function display_session_status() {
+  $msg = get_and_clear_status();
+  if(!is_blank($msg)) {
+    return '<div id="status">' . h($msg) . '</div>';
+  }
+}
+
+function get_and_clear_status() {
+  if(isset($_SESSION['status']) && $_SESSION['status'] != '') {
+    $msg = $_SESSION['status'];
+    unset($_SESSION['status']);
+    return $msg;
+  }
+}
+
+
 ?>

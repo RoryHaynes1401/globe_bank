@@ -2,6 +2,10 @@
 
   require_once('../../../private/initialize.php');
 
+  $subject_set = find_all_subjects();
+  $subject_count = mysqli_num_rows($subject_set) + 1;
+  mysqli_free_result($subject_set);
+
 if(is_post_request()) {
     //Handle form values sent by new.php
   $subject = [];
@@ -13,6 +17,7 @@ if(is_post_request()) {
 
   if ($result === true) {
     $new_id = mysqli_insert_id($db);
+    $_SESSION['status'] = "Subject created";
     redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
   } else {
     $errors = $result;
@@ -20,7 +25,7 @@ if(is_post_request()) {
   }
 
  } else {
-   
+
   $subject = [];
   $subject["menu_name"] = '';
   $subject["position"] = $subject_count;
@@ -29,9 +34,7 @@ if(is_post_request()) {
 }
 
 
-$subject_set = find_all_subjects();
-$subject_count = mysqli_num_rows($subject_set) + 1;
-mysqli_free_result($subject_set);
+
 
 
 ?>
