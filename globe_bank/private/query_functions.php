@@ -301,4 +301,17 @@ function find_pages_by_subject_id($subject_id, $options=[]){
   return $result;
 }
 
+function find_all_admins(){
+  global $db;
+
+  $sql = "SELECT * FROM admins ";
+  $sql .= "ORDER BY id ASC";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+
+
+
  ?>
