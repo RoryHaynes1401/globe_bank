@@ -61,7 +61,6 @@ $page_set = find_pages_by_subject_id($id);
           <?php $subject = find_subject_by_id($page['subject_id']); ?>
           <tr>
             <td><?php echo h($page['id']); ?></td>
-            <td><?php echo h($subject['menu_name']); ?></td>
             <td><?php echo h($page['position']); ?></td>
             <td><?php echo $page['visible'] == 1 ? 'true' : 'false'; ?></td>
             <td><?php echo h($page['menu_name']); ?></td>
