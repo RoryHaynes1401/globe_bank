@@ -6,7 +6,7 @@
 
 ?>
 
-<?php //$page_title = 'Pages'; ?>
+<?php $page_title = 'Admins'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
