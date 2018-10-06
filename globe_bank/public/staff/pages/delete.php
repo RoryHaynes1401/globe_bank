@@ -7,15 +7,15 @@ if(!isset($_GET['id'])) {
 }
 $id = $_GET['id'];
 
+$page = find_page_by_id($id);
+
 if(is_post_request()) {
 
   $result = delete_page($id);
-  //TODO add message here
-  $_SESSION['status'] = "Page deleted";
-  redirect_to(url_for('/staff/pages/index.php'));
 
-} else {
-  $page = find_page_by_id($id);
+  $_SESSION['status'] = "Page deleted";
+  redirect_to(url_for('/staff/subjects/show.php?id=' . h(u($page['subject_id']))));
+
 }
 
 ?>
