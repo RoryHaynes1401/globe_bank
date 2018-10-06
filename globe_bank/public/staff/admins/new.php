@@ -5,7 +5,7 @@
 //}
 //$id = $_GET['id'];
 
-
+require_login(); 
 
 if(is_post_request()) {
   //Handle form values sent by new.php

@@ -1,4 +1,6 @@
-<?php require_once('../../../private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php');
+require_login();
+?>
 <?php
 
 $id = $_GET['id'] ?? '1'; //PHP > 7.0 special turnary operator

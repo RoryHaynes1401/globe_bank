@@ -6,13 +6,43 @@ $username = '';
 $password = '';
 
 if(is_post_request()) {
+  $errors = [];
 
   $username = $_POST['username'] ?? '';
   $password = $_POST['password'] ?? '';
 
-  $_SESSION['username'] = $username;
+  if(is_blank($username)) {
+    $errors[] = "Username cannot be blank.";
+  }
 
-  redirect_to(url_for('/staff/index.php'));
+  if(is_blank($password)) {
+    $errors[] = "Password cannot be blank.";
+  }
+
+  if (empty($errors)) {
+    $login_faliure_msg = "Log in was unsuccessful";
+    $admin = find_admin_by_username($username);
+    if($admin){
+
+      if(password_verify($password, $admin['hashed_password'])) {
+        //password matches
+        log_in_admin($admin);
+        redirect_to(url_for('/staff/index.php'));
+      } else {
+        //username ok, pass not ok
+        $errors[] = $login_faliure_msg;
+      }
+    }else{
+      //no username
+      $errors[] = $login_faliure_msg;
+    }
+
+
+  }
+
+
+
+
 }
 
 ?>
